@@ -11,4 +11,16 @@ router.post(
     ProductControllers.createProduct
 );
 
+router.get('/', ProductControllers.getAllProduct);
+
+router.get('/:id', ProductControllers.getSingleProduct);
+
+router.patch(
+    '/:id',
+    validate(ProductValidations.updateProductZod),
+    ProductControllers.updateProduct
+);
+
+router.delete('/:id', ProductControllers.deleteProduct);
+
 export const ProductRoutes = router;
