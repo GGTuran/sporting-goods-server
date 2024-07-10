@@ -13,7 +13,7 @@ const createProduct = catchAsync(async (req, res) => {
 });
 
 const getAllProduct = catchAsync(async (req, res) => {
-    const result = await ProductServices.getAllProductFromDB();
+    const result = await ProductServices.getAllProductFromDB(req.query);
     //if there is no product in the database
     if (result.length === 0) {
         return res.status(404).json({
