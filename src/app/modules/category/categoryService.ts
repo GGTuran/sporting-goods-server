@@ -2,7 +2,8 @@ import QueryBuilder from "../../builder/QueryBuilder";
 import AppError from "../../errors/AppError";
 import { categorySearchableFields } from "./categoryConstants";
 import { TCategory } from "./categoryInterface";
-import Category from "./categoryModel";
+import { Category } from "./categoryModel";
+
 
 const createCategoryIntoDB = async (payload: TCategory) => {
     const result = await Category.create(payload);

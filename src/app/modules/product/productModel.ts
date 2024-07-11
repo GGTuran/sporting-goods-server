@@ -34,6 +34,10 @@ const ProductSchema = new Schema<TProduct>({
         type: String,
         required: true
     },
-});
+},
+{
+    timestamps:true,
+}
+);
 
 export const Product = model<TProduct>('Product', ProductSchema);

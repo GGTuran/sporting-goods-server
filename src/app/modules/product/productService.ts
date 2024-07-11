@@ -10,7 +10,7 @@ const createProductIntoDB = async (payload: TProduct) => {
 };
 
 const getAllProductFromDB = async(query: Record<string, unknown>) => {
-    const productQuery =  new QueryBuilder(Product.find(), query)
+    const productQuery =  new QueryBuilder(Product.find().sort({ createdAt: -1 }), query)
     .filter()
     .sort()
     .fields()
