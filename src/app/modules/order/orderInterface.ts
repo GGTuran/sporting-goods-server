@@ -5,8 +5,11 @@ export type TOrder = {
     email: string;
     phone: string;
     deliveryAddress: string;
-    productId: mongoose.Types.ObjectId;
-    quantity: number;
+    products: {
+        productId: mongoose.Types.ObjectId;
+        quantity: number;
+    }[];
+    
     paymentMethod: string;
 }
 
