@@ -123,13 +123,13 @@ modules
 
 - **Method**: `PUT`
 - **Route**: `/api/products/:id`
-- **Description**: Update the details of a specific bike 
+- **Description**: Update the details of a specific product 
 
 ### Delete Product
 
 - **Method**: `DELETE`
 - **Route**: `/api/products/:id`
-- **Description**: Remove a specific bike from the system 
+- **Description**: Remove a specific product from the system 
 
 
 ## Order Routes
