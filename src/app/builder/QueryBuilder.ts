@@ -37,12 +37,19 @@ class QueryBuilder<T> {
         return this;
     }
 
-    sort() {
-        const sort = (this?.query?.sort as string)?.split(',')?.join(' ') || '-createdAt';
-        this.modelQuery = this.modelQuery.sort(sort as string);
+sort() {
+    const sort = (this?.query?.sort as string)?.split(',')?.join(' ') || '-createdAt'; // Default sort by createdAt if no sort query provided
 
-        return this;
+    // Check if sorting by price is requested
+    if (sort.includes('price')) {
+        const sortOrder = sort.startsWith('-') ? -1 : 1; // Determine ascending (1) or descending (-1) order
+        this.modelQuery = this.modelQuery.sort({ price: sortOrder });
+    } else {
+        this.modelQuery = this.modelQuery.sort(sort);
     }
+
+    return this;
+}
 
     paginate() {
         const page = Number(this?.query?.page) || 1;
@@ -63,20 +70,7 @@ class QueryBuilder<T> {
             return this;
     }
 
-    // async countTotal() {
-    //     const totalQueries = this.modelQuery.getFilter();
-    //     const total = await this.modelQuery.model.countDocuments(totalQueries);
-    //     const page = Number(this?.query?.page) || 1;
-    //     const limit = Number(this?.query?.limit) || 10;
-    //     const totalPage = Math.ceil(total / limit);
-    
-    //     return {
-    //       page,
-    //       limit,
-    //       total,
-    //       totalPage,
-    //     };
-    //   }
+
 
 
 

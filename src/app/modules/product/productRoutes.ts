@@ -23,6 +23,8 @@ router.patch(
 
 router.delete('/:id', ProductControllers.deleteProduct);
 
+router.get('/category/:category', ProductControllers.getProductsByCategory);
+
 export const ProductRoutes = router;
 
 

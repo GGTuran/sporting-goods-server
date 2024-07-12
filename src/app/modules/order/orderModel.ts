@@ -37,10 +37,8 @@ const OrderSchema = new Schema<TOrder>({
 }
 );
 
-export const Order = model<TOrder>('Order', OrderSchema)
 
-
-
+//to reduce quantity
 OrderSchema.pre('save', async function (next) {
     const amount = await Product.findById(this.productId);                  //checking the availability
   
@@ -59,3 +57,8 @@ OrderSchema.pre('save', async function (next) {
   
     next();
   });
+
+export const Order = model<TOrder>('Order', OrderSchema)
+
+
+

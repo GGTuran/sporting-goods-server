@@ -10,11 +10,19 @@ const createProductIntoDB = async (payload: TProduct) => {
 };
 
 const getAllProductFromDB = async(query: Record<string, unknown>) => {
-    const productQuery =  new QueryBuilder(Product.find().sort({ createdAt: -1 }), query)
-    .filter()
-    .sort()
-    .fields()
-    .search(productSearchableFields);
+    const { category, ...otherFilters } = query;
+
+    const productQuery = new QueryBuilder(Product.find().sort({ createdAt: -1 }), otherFilters)
+      .filter()
+      .sort()
+      .fields()
+      .search(productSearchableFields);
+  
+    // Add category filter if provided
+    if (category) {
+      productQuery.modelQuery = productQuery.modelQuery.where({ category });
+    }
+  
     const result = await productQuery.modelQuery;
     return result;
 };
@@ -46,10 +54,16 @@ const deleteProductFromDB = async(id: string) => {
 
 }
 
+const getProductsByCategory = async(category: string) => {
+    const result = await Product.find({category});
+    return result;
+}
+
 export const ProductServices = {
     createProductIntoDB,
     getAllProductFromDB,
     getSingleProductFromDB,
     updateProductIntoDB,
     deleteProductFromDB,
+    getProductsByCategory,
 }
