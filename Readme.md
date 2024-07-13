@@ -3,9 +3,9 @@
 
 # Home Of Sports Backend
 
-## Live URL
 
-[https://home-of-sports-server.vercel.app/](https://home-of-sports-server.vercel.app/)
+
+[Live Link](https://home-of-sports-server.vercel.app/)
 
 ## Introduction
 This backend server is designed to support an e-commerce platform specializing in selling sports goods. It provides robust features to ensure a seamless and secure shopping experience for customers and effective management capabilities for administrators. This system is particularly beneficial for sports enthusiasts and professionals looking for a variety of sporting goods.
@@ -118,10 +118,15 @@ modules
 - **Method**: `GET`
 - **Route**: `/api/products`
 - **Description**: Retrieve a list of all available products.
+### Get SIngle Products
+
+- **Method**: `GET`
+- **Route**: `/api/products/:id`
+- **Description**: Retrieve a single product.
 
 ### Update Product
 
-- **Method**: `PUT`
+- **Method**: `PATCH`
 - **Route**: `/api/products/:id`
 - **Description**: Update the details of a specific product 
 
